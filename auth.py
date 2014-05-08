@@ -38,8 +38,12 @@ def request_CK(api, gui):
         gui.login.set_login_button(response['validationUrl'])
         gui.login.show()
         gui.wait_for_click()    # User clicks 'Go online'
+        if gui.login.step.get() == 'quit':
+            quit()
         ### Web browser opens for login. When back to GUI... 
         gui.wait_for_click()    # User clicks 'Continue'
+        if gui.login.step.get() == 'quit':
+            quit()
     save_CK()
     api = ovh.Api(ovh.OVH_API_EU, AK, AS, CK)
     return api

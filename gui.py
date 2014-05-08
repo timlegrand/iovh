@@ -239,7 +239,10 @@ class LoginContentFrame(ContentFrame):
         entry.pack()
         self.login_button = Button(entry, text='Proceed online', button_left='button_left_users')
         self.login_button.pack()
-        self.step = tk.StringVar()
+        self.step = tk.StringVar() # Registering to 'step' var changes enables communication
+        self.quit_button = Button(entry, text='Quit', button_left='button_left_power')
+        self.quit_button.bind("<Button-1>", lambda event, arg=['quit', None]: self.on_click(*arg))
+        self.quit_button.pack()
     
     def set_login_button(self, url):
         self.login_button.bind("<Button-1>", lambda event, arg=['go_online', url]: self.on_click(*arg))
@@ -258,6 +261,8 @@ class LoginContentFrame(ContentFrame):
             self.login_button.update_text('Retry')
         elif e == 'continue':
             self.step.set('continue')
+        elif e == 'quit':
+            self.step.set('quit')
     
     def add_entry(self, e):
         pass
