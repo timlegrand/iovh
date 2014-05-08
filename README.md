@@ -17,7 +17,7 @@ Running the app
 ---------------
     python iovh.py
 or:
-    ./iovh.py
+	./iovh.py
     
 Don't forget to look at the GUI when ready. Console output is provided for debug purposes only.
 
